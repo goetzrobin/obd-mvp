@@ -30,19 +30,23 @@ export const subscribe = async () => {
     await unregisterServiceWorkers()
 
     const swRegistration = await registerServiceWorker()
-    await window?.Notification.requestPermission()
 
-    try {
-        const options = {
-            applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-            userVisibleOnly: true,
+    setTimeout(async () => {
+        await window?.Notification.requestPermission()
+
+        try {
+            const options = {
+                applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+                userVisibleOnly: true,
+            }
+            const subscription = await swRegistration.pushManager.subscribe(options)
+
+            await saveSubscription(subscription)
+
+            console.log({subscription})
+        } catch (err) {
+            console.error('Error', err)
         }
-        const subscription = await swRegistration.pushManager.subscribe(options)
+    }, 300)
 
-        await saveSubscription(subscription)
-
-        console.log({subscription})
-    } catch (err) {
-        console.error('Error', err)
-    }
 }
