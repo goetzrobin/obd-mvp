@@ -1,4 +1,5 @@
-'use client';
+"use client";
+
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -9,7 +10,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -39,7 +39,7 @@ const UserInput = (props: { enabled: boolean; onSend: (message: string) => void 
           name="message"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>What's on your mind</FormLabel>
+              <FormLabel>What&apos;s on your mind</FormLabel>
               <FormControl className="w-full">
                 <Input className="w-full" placeholder="Type something..." {...field} />
               </FormControl>

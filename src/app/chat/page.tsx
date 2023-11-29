@@ -8,7 +8,6 @@ import {
     useMessageSocketReadyState,
 } from '@/lib/messages/message-socket.store';
 import {
-    useMessageHistory,
     useMessageHistoryActions,
     useMessagesForKey,
 } from '@/lib/messages/message-history.store';
@@ -33,14 +32,13 @@ const Page = () => {
     useEffect(() => registerOnMessageCallback((message: Message) => {
         setLoading(false);
         addMessage(CHANNEL, message);
-    }), [registerOnMessageCallback, setLoading, addMessage, CHANNEL]);
+    }), [registerOnMessageCallback, setLoading, addMessage]);
 
     useEffect(() => {
         initSocket();
-    }, []);
+    }, [initSocket]);
 
     const sendUserMessageAndAddToHistory = (message: string) => {
-        console.log(currentUser, message)
         if (!currentUser) return;
         setLoading(true)
         sendMessage(currentUser?.name, message);
