@@ -1,17 +1,15 @@
 import React from 'react';
-import {cnH3} from "@/components/ui/typography";
+import {cnH3, cnMuted} from "@/components/ui/typography";
 import {notificationsSupported, subscribe} from "@/lib/web-push-utils";
 import {Button} from "@/components/ui/button";
+import {LucideBell} from "lucide-react";
 
 const WebPush = () => {
     if (!notificationsSupported()) {
-        return <h3 className={cnH3()}>Please install the PWA first!</h3>
+        return <h3 className={cnMuted()}>Please install the PWA first!</h3>
     }
 
-    return <div className="my-10">
-        <h3 className={cnH3()}>Subscribe for Robin</h3>
-        <Button className="mt-4" onClick={subscribe}>Ask permission and subscribe!</Button>
-    </div>
+    return <Button variant="ghost" size="sm" onClick={subscribe}><LucideBell className="h-4 w-4"/></Button>
 }
 
 export default WebPush;
