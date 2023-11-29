@@ -14,9 +14,6 @@ webpush.setVapidDetails(
 export async function POST(request: NextRequest) {
     const subscription = (await request.json()) as PushSubscription | null
 
-    console.log('received sub', subscription)
-
-
     if (!subscription) {
         console.error('No subscription was provided!')
         return
