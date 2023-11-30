@@ -1,7 +1,7 @@
 {
   "id": "123",
-  "name": "My awesome PWA app",
-  "short_name": "PWA App",
+  "name": "One Beautiful Day",
+  "short_name": "OBD",
   "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
